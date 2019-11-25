@@ -1,11 +1,15 @@
 package camp.nextstep.edu.racingcar;
 
 public class Car {
+
+    public static final int DEFAULT_POSITION = 0;
+    public static final int LENGTH_OF_NAME = 5;
+
     private final String name;
     private int position;
 
     Car(final String name) {
-        this(name, 0);
+        this(name, DEFAULT_POSITION);
     }
 
     Car(final String name, final int position) {
@@ -25,7 +29,7 @@ public class Car {
     }
 
     private void validate(final String name) {
-        if (name == null || name.length() > 5) {
+        if (name == null || name.length() > LENGTH_OF_NAME) {
             throw new IllegalArgumentException();
         }
     }
