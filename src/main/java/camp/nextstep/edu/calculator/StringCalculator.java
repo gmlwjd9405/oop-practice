@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
-    public static final String DEFAULT_DELIMITER = ",|:";
+    public static final String DEFAULT_DELIMITER_REGEX = ",|:";
+    public static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
 
     public int add(final String text) {
         if (isEmptyOrNull(text)) {
@@ -33,6 +34,9 @@ public class StringCalculator {
     private List<Integer> convertIntArrayToList(int[] input) {
         List<Integer> list = new ArrayList<>();
         for (int i : input) {
+            if (i < 0) {
+                throw new RuntimeException();
+            }
             list.add(i);
         }
         return list;
@@ -45,11 +49,11 @@ public class StringCalculator {
     }
 
     private int[] convertIntArray(final String text) {
-        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        Matcher m = Pattern.compile(CUSTOM_DELIMITER_REGEX).matcher(text);
         if (m.find()) {
             return splitByDelimiter(m.group(2), m.group(1));
         }
-        return splitByDelimiter(text, DEFAULT_DELIMITER);
+        return splitByDelimiter(text, DEFAULT_DELIMITER_REGEX);
     }
 
 }
