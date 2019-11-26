@@ -34,18 +34,16 @@ public class StringCalculator {
     private List<Integer> convertIntArrayToList(int[] input) {
         List<Integer> list = new ArrayList<>();
         for (int i : input) {
-            if (i < 0) {
-                throw new RuntimeException();
-            }
+            checkNegativeNumber(i);
             list.add(i);
         }
         return list;
     }
 
-    private int[] splitByDelimiter(final String text, final String delimiter) throws NumberFormatException {
-        return Arrays.stream(text.split(delimiter))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+    private void checkNegativeNumber(int number) {
+        if (number < 0) {
+            throw new RuntimeException();
+        }
     }
 
     private int[] convertIntArray(final String text) {
@@ -54,6 +52,12 @@ public class StringCalculator {
             return splitByDelimiter(m.group(2), m.group(1));
         }
         return splitByDelimiter(text, DEFAULT_DELIMITER_REGEX);
+    }
+
+    private int[] splitByDelimiter(final String text, final String delimiter) throws NumberFormatException {
+        return Arrays.stream(text.split(delimiter))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 
 }
