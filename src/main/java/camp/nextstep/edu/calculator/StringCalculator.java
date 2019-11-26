@@ -42,7 +42,7 @@ public class StringCalculator {
         return list;
     }
 
-    private int[] splitByDelimiter(final String text, final String delimiter) {
+    private int[] splitByDelimiter(final String text, final String delimiter) throws NumberFormatException {
         return Arrays.stream(text.split(delimiter))
                 .mapToInt(Integer::parseInt)
                 .toArray();
