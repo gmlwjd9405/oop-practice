@@ -61,4 +61,11 @@ public class StringCalculatorTest {
                 .isThrownBy(() -> calculator.add("-1"));
     }
 
+    @DisplayName(value = "문자열 계산기에 숫자가 아닌 문자를 전달하는 경우 NumberFormatException 예외 처리를 한다.")
+    @Test
+    void notNumeric() {
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> calculator.add("s"));
+    }
+
 }
