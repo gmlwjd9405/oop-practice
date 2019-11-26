@@ -2,13 +2,11 @@ package camp.nextstep.edu.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringCalculatorTest {
 
@@ -40,11 +38,11 @@ public class StringCalculatorTest {
         assertThat(calculator.add(text)).isSameAs(3);
     }
 
-    @DisplayName(value = "//와 \\\\n 문자 사이에 커스텀 구분자를 지정할 수 있다.")
+    @DisplayName(value = "//와 \n 문자 사이에 커스텀 구분자를 지정할 수 있다.")
     @ParameterizedTest
-    @ValueSource(strings = {"//;\\n1;2;3"})
+    @ValueSource(strings = {"//;\n1;2;3"})
     void customDelimiter(final String text) {
-        assertThat(calculator.add(text)).isSameAs(3);
+        assertThat(calculator.add(text)).isSameAs(6);
     }
 
 }
