@@ -80,7 +80,12 @@
         - 가능하면 관련된 클래스에 상수를 구현한다.
         - https://www.slipp.net/questions/174 참고 
     
-- `Arrays#asList(Object[])`는 `java.util.ArrayList`가 아닌 Arrays 의 내부 클래스인 ArrayList 를 돌려준다.
+- `Arrays#asList(Object[])`는 `java.util.ArrayList`가 아닌 Arrays 의 내부 클래스인 ArrayList(`java.util.Arrays.ArrayList`)를 돌려준다.
+    - 이 클래스는 set(), get(), contains() 매서드를 가지고 있지만 원소를 추가하는 메서드는 가지고 있지 않기 때문에 사이즈를 바꿀 수 없다. 
+    - `java.util.ArrayList`을 받기 위해서는 아래와 같이 변환하자
+        ```java
+        ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(arr));
+        ```
     - [Arrays#asList(Object[]) 사용 시 주의할 점](https://bestalign.github.io/2015/08/31/top-10-mistakes-java-developers-make-1/)
     
 - Stream 사용 이유
@@ -111,6 +116,20 @@
     ```
     - [Exception 처리 참고](https://www.slipp.net/questions/350) 
 
+- equals 와 hashCode 오버라이딩
+
+- Matcher 의 find() 와 matches() 의 차이
+    - `find()`
+        - 대상 문자열에서 해당 패턴을 검색하여 일치하는 패턴이 일부라도 존재하면 return true
+    - `matches()`
+        - 대상 문자열 전체가 해당 패턴과 일치하면 return true
+        - 문자열의 처음부터 끝까지 정규식을 만족해야 한다.
+    - debugging 에서 find() 값이 false 가 나오는 원인 찾기!!
+        - 클래스 필드로 선언한 pattern 이용 시 return false
+        - 내부 필드로 선언한 pattern 이용 시 return true
+    - [Difference between matches() and find() in Java Regex](https://www.tutorialspoint.com/Difference-between-matches-and-find-in-Java-Regex)
+    - [Matcher 클래스 메서드](https://enterkey.tistory.com/353)
+    
 - 참고
     - [좋은 객체의 7가지 덕목](https://codingnuri.com/seven-virtues-of-good-object/)
     - [styleguide](http://cr.openjdk.java.net/~alundblad/styleguide/index-v6.html#toc-modifiers)
