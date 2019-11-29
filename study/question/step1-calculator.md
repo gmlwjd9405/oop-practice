@@ -117,6 +117,9 @@
     - [Exception 처리 참고](https://www.slipp.net/questions/350) 
 
 - equals 와 hashCode 오버라이딩
+    - Test Code 를 위한 오버라이딩 정의?
+    - [Java equals()와 hashCode()에 대해](https://nesoy.github.io/articles/2018-06/Java-equals-hashcode)
+    - [https://jojoldu.tistory.com/134](https://jojoldu.tistory.com/134)
 
 - Matcher 의 find() 와 matches() 의 차이
     - `find()`
