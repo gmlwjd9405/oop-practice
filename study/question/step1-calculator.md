@@ -130,6 +130,19 @@
     - [Difference between matches() and find() in Java Regex](https://www.tutorialspoint.com/Difference-between-matches-and-find-in-Java-Regex)
     - [Matcher 클래스 메서드](https://enterkey.tistory.com/353)
     
+- parameter 객체의 private field 에 대한 접근 
+```java
+public class Number {
+    private int value;
+    public int toInt() {
+        return this.value;
+    }
+    public Number plus(final Number number) {
+        return new Number(this.value + number.value); // parameter 객체의 private field 값 사용
+        // return new Number(this.value + number.toInt()); 
+    }
+}
+```
 - 참고
     - [좋은 객체의 7가지 덕목](https://codingnuri.com/seven-virtues-of-good-object/)
     - [styleguide](http://cr.openjdk.java.net/~alundblad/styleguide/index-v6.html#toc-modifiers)
