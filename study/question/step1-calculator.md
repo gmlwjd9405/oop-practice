@@ -131,18 +131,43 @@
     - [Matcher 클래스 메서드](https://enterkey.tistory.com/353)
     
 - parameter 객체의 private field 에 대한 접근 
-```java
-public class Number {
-    private int value;
-    public int toInt() {
-        return this.value;
+    - 동일한 클래스가 인자인 경우 private field 에 접근할 수 있다.
+    ```java
+    public class Number {
+        private int value;
+        public int toInt() {
+            return this.value;
+        }
+        public Number plus(final Number number) {
+            return new Number(this.value + number.value); // parameter 객체의 private field 값 사용
+            // return new Number(this.value + number.toInt()); 
+        }
     }
-    public Number plus(final Number number) {
-        return new Number(this.value + number.value); // parameter 객체의 private field 값 사용
-        // return new Number(this.value + number.toInt()); 
+    ```
+
+- Functional Interface 란
+    - 단 하나의 추상 메소드(Single Abstract Method, SAM)를 가지는 인터페이스이다.
+    - `@FunctionalInterface` annotation 을 안붙여도 되지만, 붙이는 것을 권장한다.
+    - [Java8에서 제공하는 Functional Interface API](https://multifrontgarden.tistory.com/125)
+    - 이런 인터페이스들은 모두 람다식을 이용해서 익명 구현 객체로 표현이 가능하다.
+    - e.g. Predicate interface 
+    ```java
+    @FunctionalInterface
+    public interface Predicate<T> {
+        boolean test(T t);
     }
-}
-```
+    private static void example() {
+        final Predicate<Integer> isPositive = i -> i > 0;
+        final List<Integer> numbers = Arrays.asList(-1, 0, 1);
+        for (final Integer num : numbers) {
+          if (isPositive.test(num)) {
+            System.out.println(num);  // 1
+          }
+        }
+    }
+    ```
+
 - 참고
     - [좋은 객체의 7가지 덕목](https://codingnuri.com/seven-virtues-of-good-object/)
     - [styleguide](http://cr.openjdk.java.net/~alundblad/styleguide/index-v6.html#toc-modifiers)
+    - [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html#s5.2.4-constant-names)
