@@ -38,8 +38,9 @@ public class StringCalculator {
 
     private int sum(final String[] operands) {
         return Arrays.stream(operands)
-                .mapToInt(Number::toInt)
-                .sum();
+                .map(Number::of)
+                .reduce(Number.ZERO, Number::plus)
+                .toInt();
     }
 
 }
