@@ -1,5 +1,7 @@
 package camp.nextstep.edu.calculator.number;
 
+import camp.nextstep.edu.calculator.exception.NegativeNumberException;
+
 public class Number {
 
     public static final int ZERO_VALUE = 0;
@@ -17,7 +19,7 @@ public class Number {
 
     private void validateNegativeNumber(final int number) {
         if (isNegative(number)) {
-            throw new NumberFormatException();
+            throw new NegativeNumberException(number);
         }
     }
 
