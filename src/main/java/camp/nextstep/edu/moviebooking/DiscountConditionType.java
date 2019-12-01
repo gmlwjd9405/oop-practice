@@ -1,4 +1,4 @@
-package camp.nextstep.edu.moviebookingsystem;
+package camp.nextstep.edu.moviebooking;
 
 public enum DiscountConditionType {
     SEQUENCE,   // 순번 조건

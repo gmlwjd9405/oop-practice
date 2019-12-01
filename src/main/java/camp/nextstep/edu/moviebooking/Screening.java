@@ -1,4 +1,4 @@
-package camp.nextstep.edu.moviebookingsystem;
+package camp.nextstep.edu.moviebooking;
 
 import java.time.LocalDateTime;
 

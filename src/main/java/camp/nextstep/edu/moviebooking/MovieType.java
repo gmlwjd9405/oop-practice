@@ -1,4 +1,4 @@
-package camp.nextstep.edu.moviebookingsystem;
+package camp.nextstep.edu.moviebooking;
 
 public enum MovieType {
     AMOUNT_DISCOUNT,    // 금액 할인 정책

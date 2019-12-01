@@ -1,4 +1,4 @@
-package camp.nextstep.edu.moviebookingsystem;
+package camp.nextstep.edu.moviebooking;
 
 public class ReservationAgency {
     public Reservation reserve(Screening screening, Customer customer, int audienceCount) {
