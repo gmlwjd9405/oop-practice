@@ -6,11 +6,11 @@
     - [main](https://github.com/gmlwjd9405/oop-practice/tree/master/src/main/java/camp/nextstep/edu/ticketsales)
     - [test](https://github.com/gmlwjd9405/oop-practice/tree/master/src/test/java/camp/nextstep/edu/ticketsales)
  
-### moviebookingsystem
+### moviebooking
 - 오브젝트 책 예제: 온라인 영화 예매 시스템
 - 바로가기
-    - [main](https://github.com/gmlwjd9405/oop-practice/tree/master/src/main/java/camp/nextstep/edu/moviebookingsystem)
-    - [test](https://github.com/gmlwjd9405/oop-practice/tree/master/src/test/java/camp/nextstep/edu/moviebookingsystem)
+    - [main](https://github.com/gmlwjd9405/oop-practice/tree/master/src/main/java/camp/nextstep/edu/moviebooking)
+    - [test](https://github.com/gmlwjd9405/oop-practice/tree/master/src/test/java/camp/nextstep/edu/moviebooking)
  
 ### racingcar
 - ddd 강의 [practice 1] Junit5 사용하기 
