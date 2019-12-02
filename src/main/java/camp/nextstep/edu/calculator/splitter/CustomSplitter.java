@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class CustomSplitter implements Splitter {
 
-    private static final String CUSTOM_DELIMITER_REGEX = "//(.)\n(.*)";
+    private static final String CUSTOM_DELIMITER_REGEX = "//(.*)\n(.*)";
     private static final int INDEX_OF_DELIMITER = 1;
     private static final int INDEX_OF_VALUE = 2;
 
