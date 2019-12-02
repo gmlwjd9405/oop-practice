@@ -117,13 +117,33 @@
     - [Exception 처리 참고](https://www.slipp.net/questions/350) 
 
 - equals 와 hashCode 오버라이딩
-    - Test Code 를 위한 오버라이딩 정의?
+    - 해당 인스턴스들이 갖고 있는 값들이 같을 경우 같은 인스턴스로 봐야하는 경우엔 equals 를 오버라이딩하여 사용한다.
+    - 단, equals와 hashCode는 모두 **VO(Value Object)** 에서만 사용하는 것을 권장한다.
+        - 값을 나타내는 것 외에 기능을 갖고 있는 인스턴스에서는 문제가 발생할 여지가 많기 때문에 사용하지 않는 것이 좋다.
     - [Java equals()와 hashCode()에 대해](https://nesoy.github.io/articles/2018-06/Java-equals-hashcode)
     - [https://jojoldu.tistory.com/134](https://jojoldu.tistory.com/134)
 
+- `java.util.regex` 패키지에 있는 정규식 관련 클래스
+    - **Pattern**
+        - 정규식의 컴파일된 표현 (정규식을 적용 가능하도록 컴파일해서 가지고 있음)
+         - public 생성자를 제공하지 않는다.
+             - Pattern 을 생성하려면 Pattern 객체를 반환하는 static compile 메서드를 호출해야 한다.
+             - `private final Pattern pattern = Pattern.compile(CUSTOM_DELIMITER_REGEX)`
+             - 이 메서드는 첫 번째 인자로 정규식 문자열을 받는다.
+    - **Matcher**
+        - 패턴을 해석하고 입력 문자열에 대한 일치 작업을 수행하는 엔진
+        - public 생성자를 제공하지 않는다.
+            - Matcher 객체는 Pattern 객체의 matcher 메서드를 호출해서 얻는다.
+            - `Matcher matcher = pattern.matcher(value);`
+    - **PatternSyntaxException**
+        - 정규식 패턴의 문법 오류를 나타내는 unchecked 예외 
+    - [참고](https://offbyone.tistory.com/400)
+    
 - Matcher 의 find() 와 matches() 의 차이
     - `find()`
         - 대상 문자열에서 해당 패턴을 검색하여 일치하는 패턴이 일부라도 존재하면 return true
+        - true 반환 후 해당 위치로 이동한다. (여러 개가 매칭되는 경우 반복적인 수행이 가능)
+        - c.f. [group() 메서드 사용](https://www.javatpoint.com/post/java-matcher-group-method)을 위해서는 해당 메서드가 반드시 이전에 사용되어야 한다.
     - `matches()`
         - 대상 문자열 전체가 해당 패턴과 일치하면 return true
         - 문자열의 처음부터 끝까지 정규식을 만족해야 한다.
@@ -132,6 +152,12 @@
         - 내부 필드로 선언한 pattern 이용 시 return true
     - [Difference between matches() and find() in Java Regex](https://www.tutorialspoint.com/Difference-between-matches-and-find-in-Java-Regex)
     - [Matcher 클래스 메서드](https://enterkey.tistory.com/353)
+    
+- Pattern String 에 정규표현식에서 사용되는 메타 데이터가 포함되어 있는 경우 주의
+    - *, ?, +, [, {, (, }, ^, $ ($의 경우 역슬래쉬 개수가 다름)
+    - 앞에 역슬래쉬 \\ 를 2개 붙인다.
+    - e.g. `String.replace()` 또는 `String.split()` 
+    - 관련 에러: `java.util.regex.PatternSyntaxException: Dangling meta character`
     
 - parameter 객체의 private field 에 대한 접근 
     - 동일한 클래스가 인자인 경우 private field 에 접근할 수 있다.
