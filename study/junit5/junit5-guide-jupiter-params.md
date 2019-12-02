@@ -159,7 +159,32 @@ testCompile("org.junit.jupiter:junit-jupiter-params:5.4.2")
         }
     }
     ```
- 
+    
+#### CSV Literals
+- **@CsvSource**
+    - `@CsvSource`는 쉼표로 구분된 값의 배열을 허용하며, 각 배열 항목은 CSV 파일의 행에 해당한다.
+        - input value 와 expected value 를 test method 에 전달
+        - input value 로 실제 결과 계산
+        - 실제 값을 expected value 으로 가정
+- e.g. 문자열을 대문자로 변경
+    ```java
+    @ParameterizedTest
+    @CsvSource({"test,TEST", "tEst,TEST", "Java,JAVA"})
+    void toUpperCase_ShouldGenerateTheExpectedUppercaseValue(String input, String expected) {
+        String actualValue = input.toUpperCase();
+        assertEquals(expected, actualValue);
+    }
+    ```
+- e.g. 매번 하나의 배열 항목을 가져와서 delimiter (기본: ,) 로 나누고 test method 에 매개변수로 전달한다.
+    ```java
+    @ParameterizedTest
+    @CsvSource(value = {"test:test", "tEst:test", "Java:java"}, delimiter = ':')
+    void toLowerCase_ShouldGenerateTheExpectedLowercaseValue(String input, String expected) {
+        String actualValue = input.toLowerCase();
+        assertEquals(expected, actualValue);
+    }
+    ```
+    
 --- 
 
 # References
