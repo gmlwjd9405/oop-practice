@@ -2,6 +2,8 @@ package camp.nextstep.edu.calculator.number;
 
 import camp.nextstep.edu.calculator.exception.NegativeNumberException;
 
+import java.util.Objects;
+
 public class Number {
 
     public static final Number ZERO = new Number(Number.ZERO_VALUE);
@@ -35,6 +37,19 @@ public class Number {
 
     public int toInt() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Number number = (Number) o;
+        return value == number.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     public Number plus(final Number number) {
