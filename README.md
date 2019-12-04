@@ -39,8 +39,8 @@
 ### calculator2
 - 문자열 사칙 연산 계산기 구현하기 
 - 바로가기
-    - [main]()
-    - [test]()
+    - [main](https://github.com/gmlwjd9405/oop-practice/tree/master/src/main/java/camp/nextstep/edu/calculator2)
+    - [test](https://github.com/gmlwjd9405/oop-practice/tree/master/src/test/java/camp/nextstep/edu/calculator2)
 - 관련 repository 
     - []()
      
