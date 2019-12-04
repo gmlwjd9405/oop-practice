@@ -7,49 +7,58 @@ public class Movie {
     private String title;
     private Duration runningTime;
     private Money fee;
-    private List<DiscountCondition> discountConditions;
+//    private List<DiscountCondition> discountConditions;
+    private List<PeriodCondition> periodConditions;
+    private List<SequenceCondition> sequenceConditions;
 
     private MovieType movieType;
     private Money discountAmount;
     private double discountPercent;
 
-    public Money getFee() {
+    public Money calculateMovieFee(Screening screening) {
+        if (isDiscountable(screening)) {
+            return fee.minus(calculateDiscountAmount());
+        }
         return fee;
     }
 
-    public void setFee(Money fee) {
-        this.fee = fee;
+    private boolean isDiscountable(Screening screening) {
+//        return discountConditions.stream()
+//                .anyMatch(condition -> condition.isSatisfiedBy(screening));
+        return checkPeriodConditions(screening) || checkSequenceConditions(screening);
     }
 
-    public List<DiscountCondition> getDiscountConditions() {
-        return discountConditions;
+    private boolean checkPeriodConditions(Screening screening) {
+        return periodConditions.stream()
+                .anyMatch(condition -> condition.isSatisfiedBy(screening));
     }
 
-    public void setDiscountConditions(List<DiscountCondition> discountConditions) {
-        this.discountConditions = discountConditions;
+    private boolean checkSequenceConditions(Screening screening) {
+        return sequenceConditions.stream()
+                .anyMatch(condition -> condition.isSatisfiedBy(screening));
     }
 
-    public MovieType getMovieType() {
-        return movieType;
+    private Money calculateDiscountAmount() {
+        switch (movieType) {
+            case AMOUNT_DISCOUNT:
+                return calculateAmountDiscountedFee();
+            case PERCENT_DISCOUNT:
+                return calculatePercentDiscountedFee();
+            case NONE_DISCOUNT:
+                return calculateNoneDiscountedFee();
+        }
+        throw new IllegalStateException();
     }
 
-    public void setMovieType(MovieType movieType) {
-        this.movieType = movieType;
-    }
-
-    public Money getDiscountAmount() {
+    private Money calculateAmountDiscountedFee() {
         return discountAmount;
     }
 
-    public void setDiscountAmount(Money discountAmount) {
-        this.discountAmount = discountAmount;
+    private Money calculatePercentDiscountedFee() {
+        return fee.times(discountPercent);
     }
 
-    public double getDiscountPercent() {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(double discountPercent) {
-        this.discountPercent = discountPercent;
+    private Money calculateNoneDiscountedFee() {
+        return Money.ZERO;
     }
 }
