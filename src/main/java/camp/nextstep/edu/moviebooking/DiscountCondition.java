@@ -1,4 +1,5 @@
 package camp.nextstep.edu.moviebooking;
 
-public class DiscountCondition {
+public interface DiscountCondition {
+    boolean isSatisfiedBy(Screening screening);
 }
