@@ -2,7 +2,7 @@ package camp.nextstep.edu.calculator.splitter;
 
 import org.springframework.util.StringUtils;
 
-public class DefaultSplitter implements Splitter {
+public class CommaAndColonSplitter implements Splitter {
 
     private static final String DEFAULT_DELIMITER_REGEX = "[,:]";
 
