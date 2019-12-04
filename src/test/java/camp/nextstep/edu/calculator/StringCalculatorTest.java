@@ -66,22 +66,32 @@ public class StringCalculatorTest {
 
     private static Stream<Arguments> customDelimiterSum() {
         return Stream.of(
-                Arguments.of("//\\;\n1;2;3", 6),
-                Arguments.of("//\\;\n0", 0),
-                Arguments.of("//\\;\n1", 1),
-                Arguments.of("//\\|\n10000", 10000),
-                Arguments.of("//\\*\n100*2*3", 105)
+                // ; : & @ # %   = - ! ] }
+                Arguments.of("//;\n0", 0),
+                Arguments.of("//;\n10000", 10000),
+                Arguments.of("//;\n1;2;3", 6),
+                // |
+                Arguments.of("//|\n999", 999),
+                Arguments.of("//|\n1|2|3", 6),
+                // .
+                Arguments.of("//.\n1", 1),
+                Arguments.of("//.\n10011.2.3", 10016),
+                // ^ $
+                Arguments.of("//^\n200^22", 222),
+                // * + { [ ? ( )
+                Arguments.of("//*\n1*2*3*", 6)
         );
     }
 
-    @DisplayName(value = "custom 구분자 사이에 빈 문자열을 넣는 경우 NumberFormatException 가 발생한다.")
-    @Test
-    void emptyStringWhenCustomDelimiter() {
+    @DisplayName(value = "커스텀 구분자를 사용하는 경우 빈 문자열을 입력하면 NumberFormatException 발생")
+    @ParameterizedTest
+    @ValueSource(strings = {";", "-", "^", "*", "|", "."})
+    void emptyStringWhenCustomDelimiter(String customDelimiter) {
         assertThatExceptionOfType(NumberFormatException.class)
-                .isThrownBy(() -> calculator.add("//\\;\n"));
+                .isThrownBy(() -> calculator.add("//" + customDelimiter + "\n"));
     }
 
-    @DisplayName(value = "문자열 계산기에 음수를 전달하는 경우 NegativeNumberException 예외 처리를 한다.")
+    @DisplayName(value = "문자열 계산기에 음수를 전달하는 경우 NegativeNumberException 발생")
     @Test
     void negative() {
         assertThatThrownBy(() -> calculator.add("-1"))
@@ -89,7 +99,7 @@ public class StringCalculatorTest {
                 .hasMessageContaining("음수는 허용하지 않습니다.");
     }
 
-    @DisplayName(value = "문자열 계산기에 숫자가 아닌 문자를 전달하는 경우 NumberFormatException 예외 처리를 한다.")
+    @DisplayName(value = "문자열 계산기에 숫자가 아닌 문자를 전달하는 경우 NumberFormatException 발생")
     @ParameterizedTest
     @ValueSource(strings = {"//\\;\n1;a;3", "b", "*", "1:c,2", "1,^"})
     void notNumeric(String text) {
