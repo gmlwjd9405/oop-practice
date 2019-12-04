@@ -1,4 +1,7 @@
-package camp.nextstep.edu.moviebooking;
+package camp.nextstep.edu.moviebooking.discountcondition;
+
+import camp.nextstep.edu.moviebooking.Screening;
+import camp.nextstep.edu.moviebooking.discountcondition.DiscountCondition;
 
 public class SequenceCondition implements DiscountCondition {
     private int sequence;

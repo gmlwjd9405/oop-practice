@@ -1,4 +1,7 @@
-package camp.nextstep.edu.moviebooking;
+package camp.nextstep.edu.moviebooking.discountcondition;
+
+import camp.nextstep.edu.moviebooking.Screening;
+import camp.nextstep.edu.moviebooking.discountcondition.DiscountCondition;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
