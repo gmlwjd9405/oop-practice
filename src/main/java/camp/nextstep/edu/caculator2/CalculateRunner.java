@@ -1,8 +1,10 @@
 package camp.nextstep.edu.caculator2;
 
+import camp.nextstep.edu.caculator2.calculator.Calculator;
+
 import java.util.Scanner;
 
-public class CalculatorApplication {
+public class CalculateRunner {
 
     private static final String INPUT_MESSAGE = "계산할 문자열 입력: ";
     private static final String RESULT_MESSAGE = "문자열 계산 결과: ";
@@ -13,6 +15,6 @@ public class CalculatorApplication {
         System.out.print(INPUT_MESSAGE);
         String input = scanner.nextLine();
 
-        System.out.println(RESULT_MESSAGE + Calculator.of().calculate(input));
+        System.out.println(RESULT_MESSAGE + Calculator.of().run(input));
     }
 }
