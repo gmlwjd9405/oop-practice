@@ -18,7 +18,8 @@
     - 뺄셈
     - 곱셈
     - 나눗셈
-    - 입력 값이 null 이거나 빈 공백 문자일 경우 에러 처리
+    - 입력 값이 null 이거나 빈 공백 문자일 경우 에러 처리 (IllegalArgumentException)
+    - 사칙연산 기호가 아닌 경우 에러 처리 (IllegalArgumentException)
     - 등등...
 - 값을 입력 받는 API 는 Scanner 를 이용한다.
     - Scanner scanner = new Scanner(System.in);
