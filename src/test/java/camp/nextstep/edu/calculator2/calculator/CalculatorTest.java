@@ -1,6 +1,5 @@
-package camp.nextstep.edu.calculator2;
+package camp.nextstep.edu.calculator2.calculator;
 
-import camp.nextstep.edu.calculator2.calculator.Calculator;
 import camp.nextstep.edu.calculator2.exception.ErrorMessage;
 import camp.nextstep.edu.calculator2.exception.IllegalInputValueException;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +21,13 @@ public class CalculatorTest {
         calculator = Calculator.of();
     }
 
-    @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 에러 발생")
+    @DisplayName("Calculator 생성 확인")
+    @Test
+    void create() {
+        assertThatCode(Calculator::of).doesNotThrowAnyException();
+    }
+
+    @DisplayName("입력 값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException 에러 발생")
     @ParameterizedTest
     @NullAndEmptySource
     void isNullOrEmpty(final String value) {
