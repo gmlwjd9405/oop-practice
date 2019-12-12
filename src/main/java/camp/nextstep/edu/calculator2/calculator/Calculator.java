@@ -1,9 +1,9 @@
-package camp.nextstep.edu.caculator2.calculator;
+package camp.nextstep.edu.calculator2.calculator;
 
-import camp.nextstep.edu.caculator2.exception.ErrorMessage;
-import camp.nextstep.edu.caculator2.operation.ArithmeticOperationStrategy;
-import camp.nextstep.edu.caculator2.operation.OperationStrategy;
-import camp.nextstep.edu.caculator2.util.StringUtil;
+import camp.nextstep.edu.calculator2.exception.ErrorMessage;
+import camp.nextstep.edu.calculator2.operation.ArithmeticOperationStrategy;
+import camp.nextstep.edu.calculator2.operation.OperationStrategy;
+import camp.nextstep.edu.calculator2.util.StringUtil;
 import org.springframework.util.StringUtils;
 
 public class Calculator {

@@ -1,8 +1,8 @@
 package camp.nextstep.edu.calculator2;
 
-import camp.nextstep.edu.caculator2.calculator.Calculator;
-import camp.nextstep.edu.caculator2.exception.ErrorMessage;
-import camp.nextstep.edu.caculator2.exception.IllegalInputValueException;
+import camp.nextstep.edu.calculator2.calculator.Calculator;
+import camp.nextstep.edu.calculator2.exception.ErrorMessage;
+import camp.nextstep.edu.calculator2.exception.IllegalInputValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -71,7 +71,7 @@ public class CalculatorTest {
     void failureDivide(final String value) {
         assertThatThrownBy(() -> calculator.run(value))
                 .isInstanceOf(IllegalInputValueException.class)
-                .hasMessage(ErrorMessage.ZERO_ON_DENOMIVATOR);
+                .hasMessage(ErrorMessage.ZERO_ON_DENOMINATOR);
     }
 
     @DisplayName("지원하지 않는 연산자 포함 시 예외 처리")
@@ -103,7 +103,8 @@ public class CalculatorTest {
         return Stream.of(
                 Arguments.of("30 + 10 / 2", 20),
                 Arguments.of("-100 - -50 * 3", -150),
-                Arguments.of("-1000 * 2 / 2 + 1000", 0)
+                Arguments.of("-1000 * 2 / 2 + 1000", 0),
+                Arguments.of("2 + 3 * 4 / 2", 10)
         );
     }
 

@@ -1,4 +1,4 @@
-package camp.nextstep.edu.caculator2.operation;
+package camp.nextstep.edu.calculator2.operation;
 
 @FunctionalInterface
 public interface OperationStrategy {

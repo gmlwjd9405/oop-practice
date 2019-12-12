@@ -1,8 +1,8 @@
-package camp.nextstep.edu.caculator2.operation;
+package camp.nextstep.edu.calculator2.operation;
 
-import camp.nextstep.edu.caculator2.exception.ErrorMessage;
-import camp.nextstep.edu.caculator2.exception.IllegalInputValueException;
-import camp.nextstep.edu.caculator2.util.OperandUtil;
+import camp.nextstep.edu.calculator2.exception.ErrorMessage;
+import camp.nextstep.edu.calculator2.exception.IllegalInputValueException;
+import camp.nextstep.edu.calculator2.util.IntegerUtil;
 
 import java.util.Arrays;
 
@@ -28,7 +28,7 @@ public enum ArithmeticOperationStrategy implements OperationStrategy {
     DIVIDE("/") {
         @Override
         public int operate(int operandA, int operandB) {
-            if (OperandUtil.isZeroOnDenominator(operandB)) {
+            if (IntegerUtil.isZero(operandB)) {
                 throw new IllegalInputValueException(ErrorMessage.ZERO_ON_DENOMINATOR);
             }
             return operandA / operandB;

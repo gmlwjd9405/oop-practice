@@ -1,6 +1,6 @@
-package camp.nextstep.edu.caculator2;
+package camp.nextstep.edu.calculator2;
 
-import camp.nextstep.edu.caculator2.calculator.Calculator;
+import camp.nextstep.edu.calculator2.calculator.Calculator;
 
 import java.util.Scanner;
 
