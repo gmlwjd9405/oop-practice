@@ -1,12 +1,14 @@
-package camp.nextstep.edu.racingcar2;
+package camp.nextstep.edu.racingcar2.view;
+
+import camp.nextstep.edu.racingcar2.Car;
 
 import java.util.List;
 
-class ResultView {
+public class ResultView {
 
     private static final String POSITION_MARK = "-";
 
-    static void printResult(final List<Car> cars) {
+    public static void printResult(final List<Car> cars) {
         System.out.println("**********************");
         for (Car car : cars) {
             printPosition(car);

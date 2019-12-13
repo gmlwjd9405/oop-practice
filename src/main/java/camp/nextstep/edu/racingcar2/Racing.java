@@ -3,36 +3,36 @@ package camp.nextstep.edu.racingcar2;
 import camp.nextstep.edu.racingcar2.moving.MovingStrategy;
 import camp.nextstep.edu.racingcar2.moving.RandomMovingStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Racing {
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Car> cars;
+    private MovingStrategy movingStrategy;
 
-    public static Racing of() {
-        return new Racing();
+    public static Racing of(final int numOfCar) {
+        return new Racing(numOfCar);
     }
 
-    void run(int numOfCar, int loopCount) {
+    private Racing(final int numOfCar) {
         createCars(numOfCar);
-        MovingStrategy movingStrategy = new RandomMovingStrategy();
-
-        for (int i = 0; i < loopCount; i++) {
-            moveCars(movingStrategy);
-            ResultView.printResult(cars);
-        }
+        movingStrategy = new RandomMovingStrategy();
     }
 
     private void createCars(final int numOfCar) {
-        for (int i = 0; i < numOfCar; i++) {
-            cars.add(Car.of());
-        }
+        cars = Stream.generate(Car::of)
+                .limit(numOfCar)
+                .collect(Collectors.toList());
     }
 
-    private void moveCars(final MovingStrategy movingStrategy) {
-        for (Car car : cars) {
-            car.move(movingStrategy);
-        }
+    List<Car> run() {
+        cars.forEach(this::moveCar);
+        return cars;
+    }
+
+    private void moveCar(final Car car) {
+        car.move(movingStrategy);
     }
 }
